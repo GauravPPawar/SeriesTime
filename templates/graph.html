@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Series Time</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js" integrity="sha512-QSkVNOCYLtj73J4hbmVoOV6KVZuMluZlioC+trLpewV8qMjsWqlIQvkn1KGX2StWvPMdWGBqim1xlC8krl1EKQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</head>
+<body>
+    <canvas id ="lineChart" width="900" height="400"></canvas>
+    <!-- <script>
+        var ctx = document.getElementById("lineChart").getContext("2d");
+        const labels = [
+            'January',
+            'February',
+            'March',
+            'April',
+            'May',
+            'June',
+        ];
+        
+        var lineChart = new Chart( ctx, {
+            type: "line",
+            data: {
+                label: labels,
+                datasets: [
+                    {
+                        label: "Data Points",
+                        data: [0, 10, 5, 2, 20, 30, 45],
+                        fill: true,
+                        borderColor: "rgb( 75, 192, 192 )",
+                        // lineTension: 0.2
+                    }
+                ]
+            },
+            options: {
+                responsive: false
+            }
+        });
+    </script> -->
+
+    <script>
+      
+        const data = {
+          labels: {{ labels | safe }},
+          datasets: [{
+            label: 'Ratings',
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: {{ values | safe }},
+          }]
+        };
+      
+        const config = {
+          type: 'line',
+          data: data,
+          options: {
+                responsive: false
+            }
+        };
+      </script>
+      <script>
+        const myChart = new Chart(
+          document.getElementById('lineChart'),
+          config
+        );
+      </script>
+</body>
+</html>
