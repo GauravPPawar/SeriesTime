@@ -10,7 +10,6 @@ const lineGrapOptions = {
           display: false,
         },
         ticks: {
-          beginAtZero: false,
           padding: 12,
         },
       },
