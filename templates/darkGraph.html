@@ -17,7 +17,7 @@
     <div id="navBar">
         <nav class="navbar navbar-light bg-light">
             <a class="navbar-brand">Series Time</a>
-            
+<!--             
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Dropdown button
@@ -27,7 +27,19 @@
                     <a class="dropdown-item" href="#">Another action</a>
                     <a class="dropdown-item" href="#">Something else here</a>
                 </div>
-            </div>
+                <button onclick="makeChart(1)">Click me</button>
+
+            </div> -->
+            <select name="seasonSelectTag" id="seasonSelectTag" onchange="changeSeasonData()">
+                <!-- <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option> -->
+
+                {%for i in range(0, seasonCount)%}
+                    <option value={{i}}> {{i + 1}} </option>
+                {%endfor%}
+              </select>
 
             <form class="form-inline">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -40,6 +52,7 @@
     </div>
     <script>
         // General configuration for the charts with Line gradientStroke
+        var myChart = null;
         function makeChart(seasonNumber)
         {
             gradientChartOptionsConfiguration =
@@ -134,7 +147,11 @@
                 }]
             };
 
-            var myChart = new Chart(ctx, {
+            if(myChart!=null){
+                myChart.destroy();
+            }
+
+            myChart = new Chart(ctx, {
                 type: 'line',
                 data: data,
                 options: gradientChartOptionsConfiguration
@@ -142,8 +159,15 @@
             
         }
         makeChart(0);
-    </script>
-
+        </script>
+        <script>
+            function changeSeasonData() 
+            {
+                var x = document.getElementById("seasonSelectTag").value;
+                makeChart(parseInt(x));
+            }
+        </script>
+            
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>

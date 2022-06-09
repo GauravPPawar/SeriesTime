@@ -8,8 +8,8 @@ from matplotlib.pyplot import title
 
 app = Flask(__name__)
 
-API_KEY = 'k_z9vsnn3s'
-# API_KEY = 'k_37wugmrf'
+# API_KEY = 'k_z9vsnn3s'
+API_KEY = 'k_37wugmrf'
 @app.route('/')
 def home():
     return render_template("home.html")
@@ -22,7 +22,7 @@ def seriesGraph():
     print(seasons)
     seriesName, labelsList, valuesList = getIMDBData(seriesKey, seasons)
     print(labelsList, valuesList)
-    return render_template("darkGraph.html", seriesName = seriesName, labelsList = labelsList, valuesList = valuesList)
+    return render_template("darkGraph.html", seriesName = seriesName, labelsList = labelsList, valuesList = valuesList, seasonCount = len(labelsList))
 
 def getSeriesKey(title):
     conn = http.client.HTTPSConnection("imdb-api.com", 443)
