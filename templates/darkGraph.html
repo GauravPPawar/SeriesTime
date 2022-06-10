@@ -36,6 +36,7 @@
                 <option value="3">3</option>
                 <option value="4">4</option> -->
 
+                <option value={{seasonCount}}>All Seasons</option>
                 {%for i in range(0, seasonCount)%}
                     <option value={{i}}> {{i + 1}} </option>
                 {%endfor%}
@@ -116,8 +117,20 @@
             var gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
             var ll = {{ labelsList | safe }};
             var vl = {{ valuesList | safe }};
+            let flatLabels = [].concat.apply([], ll);
+            let flatValues = [].concat.apply([], vl);
+            
             console.log(ll[seasonNumber]);
             console.log(vl[seasonNumber]);
+            
+            ll.push(flatLabels);
+            vl.push(flatValues);
+
+            for (let i = 0; i < flatLabels.length; i++) 
+            {
+                ll[{{seasonCount}}][i] = i + 1;
+            }
+            
             gradientStroke.addColorStop(1, 'rgba(72,72,176,0.2)');
             gradientStroke.addColorStop(0.2, 'rgba(72,72,176,0.0)');
             gradientStroke.addColorStop(0, 'rgba(119,52,169,0)'); //purple colors
@@ -127,7 +140,7 @@
                 // labels: {{ labelsList[seasonNumber] | safe}},
                 labels: ll[seasonNumber],
             datasets: [{
-                label: "Data",
+                label: "Rating",
                 fill: true,
                 backgroundColor: gradientStroke,
                 borderColor: '#d048b6',
@@ -158,7 +171,7 @@
             });
             
         }
-        makeChart(0);
+        makeChart({{seasonCount}});
         </script>
         <script>
             function changeSeasonData() 

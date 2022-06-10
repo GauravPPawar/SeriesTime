@@ -8,8 +8,8 @@ from matplotlib.pyplot import title
 
 app = Flask(__name__)
 
-# API_KEY = 'k_z9vsnn3s'
-API_KEY = 'k_37wugmrf'
+API_LIST = ['k_37wugmrf', 'k_z9vsnn3s', 'k_awb898yd', 'k_uvbwvms6', 'k_flk6tnw4', 'k_8dgqb4j5', 'k_gtm868dz']
+API_Counter = 0
 @app.route('/')
 def home():
     return render_template("home.html")
@@ -29,7 +29,7 @@ def getSeriesKey(title):
     payload = ''
     headers = {}
     title = title.replace(' ', '%20')
-    conn.request("GET", "https://imdb-api.com/en/API/SearchSeries/" + API_KEY + "/" + title, payload, headers)
+    conn.request("GET", "https://imdb-api.com/en/API/SearchSeries/" + API_LIST[API_Counter] + "/" + title, payload, headers)
 
     res = conn.getresponse()
     data = res.read()
@@ -42,7 +42,7 @@ def getSeriesSeasons(seriesKey):
     conn = http.client.HTTPSConnection("imdb-api.com", 443)
     payload = ''
     headers = {}
-    conn.request("GET", "https://imdb-api.com/en/API/Title/" + API_KEY + "/"+ seriesKey, payload, headers)
+    conn.request("GET", "https://imdb-api.com/en/API/Title/" + API_LIST[API_Counter] + "/"+ seriesKey, payload, headers)
     res = conn.getresponse()
     data = res.read()
     
@@ -62,7 +62,7 @@ def getIMDBData(seriesKey, seasons):
         conn = http.client.HTTPSConnection("imdb-api.com", 443)
         payload = ''
         headers = {}
-        conn.request("GET", "https://imdb-api.com/API/SeasonEpisodes/" + API_KEY + "/"+ seriesKey +"/"+seasons[i], payload, headers)
+        conn.request("GET", "https://imdb-api.com/API/SeasonEpisodes/" + API_LIST[API_Counter] + "/"+ seriesKey +"/"+seasons[i], payload, headers)
         res = conn.getresponse()
         data = res.read()
         # print(data.decode("utf-8"))
@@ -85,4 +85,4 @@ def getIMDBData(seriesKey, seasons):
     return title, labelsList, valuesList
 
 if __name__ == "__main__":
-    app.run( host = "192.168.43.166",debug = True)
+    app.run( host = "192.168.1.8",debug = True)
