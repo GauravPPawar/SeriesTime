@@ -56,6 +56,17 @@
         var myChart = null;
         function makeChart(seasonNumber)
         {
+            
+            var episodeNamesList = {{ episodeTitlesList | safe }};
+
+            let flatepisodeNamesList = [].concat.apply([], episodeNamesList);
+            episodeNamesList.push(flatepisodeNamesList);
+
+            const titleToolTip = (tooltipitems) => {
+                console.log(tooltipitems)
+                return episodeNamesList[seasonNumber][tooltipitems[0].dataIndex];
+            }
+
             gradientChartOptionsConfiguration =
             {
                 maintainAspectRatio: false,
@@ -63,7 +74,7 @@
                     display: false
                 },
 
-                tooltips: {
+                tooltip: {
                     backgroundColor: '#fff',
                     titleFontColor: '#333',
                     bodyFontColor: '#666',
@@ -71,7 +82,7 @@
                     xPadding: 12,
                     mode: "nearest",
                     intersect: 0,
-                    position: "nearest"
+                    position: "nearest",
                 },
                 responsive: true,
                 plugins: {
@@ -79,6 +90,11 @@
                         display: true,
                         text: "{{ seriesName }}"
                     },
+                    tooltip:{
+                        callbacks:{
+                            title: titleToolTip
+                        }
+                    }
                 },
                 interaction: {
                     mode: 'index',
