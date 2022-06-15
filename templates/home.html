@@ -10,18 +10,42 @@
     <title>SeriesTime</title>
 </head>
 
-<body>
-    <h2>Series Time</h2>
 
-    <p>Start typing:</p>
+
+<body  style="background-image: url('static/image/neti.jpg');background-size:cover;" >
+  
+  <!-- <div style="background-image: url('static/image/neti.jpeg')"  > -->
+    <div >
+      <div class="card-overlay">
+
+  <div  class="center1">
+    <p style="color: rgb(255, 255, 255)" class="p">Series Time</p>
+
+    
     
     <!--Make sure the form has the autocomplete function switched off:-->
     <form autocomplete="off" action="/seriesGraph" method = "get">
-      <div class="autocomplete" style="width:300px;">
-        <input id="title" type="text" name="seriesTitle" placeholder="Country">
+      <div>
+       
+       <!-- <center> <input id="title" type="text" name="seriesTitle" style="height: 50px; " placeholder="Country"></center> -->
+       <input id="title" type="text"name="seriesTitle"  style = " width: 600px; height: 62px;" class="center2" placeholder="Enter the series name"> 
+
+      
+       <!-- <input id="title" type="text"name="seriesTitle"  style = " width: 80px;" class="center2" placeholder="Enter the series name"> -->
       </div>
-      <input type="submit">
+
+      <!-- <input type="submit"> -->
+      <button  class="submit"  type="submit" style = "position:absolute; left:908px; top:278px; text-align: center; font-size: 16px; text-emphasis-color: rgb(255, 255, 255); font-weight: bold;"  >Submit</button>
+
+        <!-- <button class="submit" type="submit" style = "position:fixed; left:900px; top:320px; text-align: center;" >Search</button> -->
     </form>
+
+  </div>
+</div>
+    </div>
+  </div>
     <script src="../static/js/home.js"></script>
+
 </body>
+
 </html>
