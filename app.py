@@ -8,8 +8,8 @@ from matplotlib.pyplot import title
 
 app = Flask(__name__)
 
-API_LIST = ['k_37wugmrf', 'k_z9vsnn3s', 'k_awb898yd', 'k_uvbwvms6', 'k_flk6tnw4', 'k_8dgqb4j5', 'k_gtm868dz']
-API_Counter = 1
+API_LIST = ['k_ixx7e51w','k_37wugmrf', 'k_z9vsnn3s', 'k_awb898yd', 'k_uvbwvms6', 'k_flk6tnw4', 'k_8dgqb4j5', 'k_gtm868dz']
+API_Counter = 0
 @app.route('/')
 def home():
     return render_template("home.html")
