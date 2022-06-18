@@ -13,7 +13,8 @@
     <title>Series Time</title>
 </head>
 
-<body>
+<body style="background-color: black;">
+
     <div id="navBar">
         <nav class="navbar navbar-light bg-light">
             <a class="navbar-brand">Series Time</a>
@@ -30,7 +31,7 @@
                 <button onclick="makeChart(1)">Click me</button>
 
             </div> -->
-            <select name="seasonSelectTag" id="seasonSelectTag" onchange="changeSeasonData()">
+            <select style="background-color:rgb(200, 157, 194); width: 200px;"  name="seasonSelectTag" id="seasonSelectTag" onchange="changeSeasonData()">
                 <!-- <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -42,10 +43,10 @@
                 {%endfor%}
               </select>
 
-            <form class="form-inline">
+            <!-- <form class="form-inline">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+            </form> -->
         </nav>
     </div>
     <div>
@@ -148,8 +149,12 @@
             }
             
             gradientStroke.addColorStop(1, 'rgba(72,72,176,0.2)');
-            gradientStroke.addColorStop(0.2, 'rgba(72,72,176,0.0)');
-            gradientStroke.addColorStop(0, 'rgba(119,52,169,0)'); //purple colors
+            gradientStroke.addColorStop(0.2, 'rgba(71,72,376,0.0)');
+            gradientStroke.addColorStop(0, 'rgba(129,52,199,0)'); //purple colors
+
+            // gradientStroke.addColorStop(1, 'rgba(72,72,176,0.2)');
+            // gradientStroke.addColorStop(0.2, 'rgba(72,72,176,0.0)');
+            // gradientStroke.addColorStop(0, 'rgba(119,52,169,0)'); //purple colors
 
             var data = {
                 // labels: ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'],
@@ -163,7 +168,7 @@
                 borderWidth: 2,
                 borderDash: [],
                 borderDashOffset: 0.0,
-                pointBackgroundColor: '#d048b6',
+                pointBackgroundColor: '#d048b6',//d048b6
                 pointBorderColor: 'rgba(255,255,255,0)',
                 pointHoverBackgroundColor: '#d048b6',
                 pointBorderWidth: 20,

@@ -35,15 +35,16 @@ input[type=submit] {
 }
 
 .autocomplete-items {
-  position: absolute;
+  position: relative;
   border: 1px solid #d4d4d4;
   border-bottom: none;
   border-top: none;
   z-index: 99;
   /*position the autocomplete items to be the same width as the container:*/
+  width: 902px;
   top: 100%;
-  left: 0;
-  right: 0;
+  
+  padding-left: 305px;
 }
 
 .autocomplete-items div {
@@ -66,6 +67,9 @@ input[type=submit] {
 .autocomplete-active {
   background-color: DodgerBlue !important;
   color: #ffffff;
+  position:absolute; 
+  left:908px;
+  top:29px;
 }
 
 .center1 {
@@ -89,8 +93,7 @@ height: 4em;
 width: 1em;
 display: inline-block;
 border-radius: 4px;
-
-box-sizing: border-box;
+box-sizing: content-box;
 }
 
 .submit {
